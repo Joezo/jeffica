@@ -50,13 +50,13 @@ function demo() {
         this.stop();
       })
       .after(1000, function () {
-        this.front(0.5);
+        this.front(0.7);
       })
-      .after(3000, function () {
-        this.stop();
-      })
-      .after(1000, function () {
-        this.right(0.5);
+      // .after(3000, function () {
+      //   this.stop();
+      // })
+      .after(500, function () {
+        this.right(0.9);
       })
       .after(1000, function () {
         this.stop();
