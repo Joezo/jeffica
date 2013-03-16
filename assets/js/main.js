@@ -1,3 +1,6 @@
+// stop the key events repeating
+var keyRepeat = false;
+
 function move(command, state){
 	$.ajax({
 		url: "/command/" + command,
@@ -52,12 +55,18 @@ function addKeyBinding(action, key){
 	console.log("Adding key binding for action: " + action + " to key: " + key);
 	$(document).bind('keydown', key,
 		function(){
-			move(action, true);
+			if(!keyRepeat){
+				keyRepeat = true;
+				move(action, true);
+			}
 		}
 	);
 	$(document).bind('keyup', key,
 		function(){
-			move(action, false);
+			if(keyRepeat){
+				move(action, false);
+				keyRepeat = false;
+			}
 		}
 	);	
 }
