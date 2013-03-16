@@ -14,7 +14,7 @@ client
     this.animate('flipLeft', 15);
   })
   .after(1000, function() {
-    this.stop();
     this.land();
+    this.stop();
   });
   
