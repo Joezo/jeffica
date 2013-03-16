@@ -3,3 +3,6 @@ thumbs.db
 *.log
 .idea/
 node_modules/
+.settings/
+.project
+*~

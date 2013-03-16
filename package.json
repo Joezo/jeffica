@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "ar-drone":"*",
-    "ar-drone-png-stream":"*"
+    "ar-drone-png-stream":"*",
+    "express": "*"
   },
   "devDependencies": {
   },
