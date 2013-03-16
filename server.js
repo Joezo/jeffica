@@ -9,12 +9,13 @@ var app = express();
 
 client.config('general:navdata_demo', true);
 
+//serve all static files from /assests
+app.use(express.static('assets'));
+
+//main actions below
 app.get('/', function(req, res){
       renderPage(res, 'view/index.html', 'text/html');
 	});
-
-//serve all static files from /assests
-app.use(express.static('assets'));
 
 app.get('/demo', function(req, res){
       renderPage(res, 'view/demo.js', 'text/javascript');
@@ -23,14 +24,18 @@ app.get('/demo', function(req, res){
 
 app.get('/battery', function(req, res){
   client.on('batteryChange', function(e){
-    res.end(e);
-  });
+    batteryLevel = {batteryLevel: e};
+    var page = JSON.stringify(batteryLevel);
+    res.setHeader('Content-Type', 'text/json');
+    res.setHeader('Content-Length', page.length)
+    res.end(page);
+  })
 });
 
-png(client, { port: 8000 });
-console.log('PNG server listening on port 8000');
-app.listen(3000);
-console.log('Web server listening on port 3000');
+png(client, { port: 8001 });
+console.log('PNG server listening on port 8001');
+app.listen(3001);
+console.log('Web server listening on port 3001');
 
 //end web server stuff
 
@@ -42,15 +47,21 @@ function demo() {
         this.clockwise(0.25);
       })
       .after(5000, function () {
-        this.clockwise(0.25);
+        this.stop();
+      })
+      .after(1000, function () {
+        this.front(0.5);
       })
       .after(5000, function () {
-        this.clockwise(0.25);
+        this.stop();
+      })
+      .after(1000, function () {
+        this.left(0.5);
       })
       .after(5000, function () {
-        this.clockwise(0.25);
+        this.stop();
       })
-      .after(3000, function () {
+      .after(1000, function () {
         this.animate('flipLeft', 15);
       })
       .after(1000, function () {
