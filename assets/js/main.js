@@ -33,7 +33,8 @@ $(document).ready(function() {
 	var controls = {
 			demo: 'ctrl+d',
 			takeoff: 'ctrl+t',
-			stop: 'space',
+			stop: 'ctrl+space',
+			land: 'space',
 			forward: 'w',
 			back: 's',
 			left: 'a',
