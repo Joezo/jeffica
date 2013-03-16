@@ -1,6 +1,9 @@
-function move(command){
+function move(command, state){
 	$.ajax({
 		url: "/command/" + command,
+		data: {
+			control: state
+		},
 		success: function( data ){
 			console.log('Moved ', command);
 		}
@@ -27,49 +30,33 @@ socket.on('connected', function (data) {
 
 $(document).ready(function() {
 	//defining keyboard shortcuts
-	$(document).bind('keydown', 'ctrl+d',
-		function(){
-			move('demo');
-		}
-	);
-	$(document).bind('keydown', 'ctrl+t',
-		function(){
-			move('takeoff');
-		}
-	);
-	$(document).bind('keydown', 'space',
-		function(){
-			move('stop');
-		}
-	);
-	$(document).bind('keydown', 'w',
-		function(){
-			move('forward');
-		}
-	);
-	$(document).bind('keydown', 's',
-		function(){
-			move('back');
-		}
-	);
-	$(document).bind('keydown', 'a',
-		function(){
-			move('left');
-		}
-	);
-	$(document).bind('keydown', 'd',
-		function(){
-			move('right');
-		}
-	);
-	$(document).bind('keydown', 'k',
-		function(){
-			move('up');
-		}
-	);
-	$(document).bind('keydown', 'm',
-		function(){
-			move('down');
-		}
-	);
+	var controls = {
+			demo: 'ctrl+d',
+			takeoff: 'ctrl+t',
+			stop: 'space',
+			forward: 'w',
+			back: 's',
+			left: 'a',
+			right: 'd',
+			up: 'k',
+			down: 'm'
+	};
+	for(var control in controls){
+		addKeyBinding(control, controls[control]);
+	}
 });
+
+//we fine an action key with to events
+function addKeyBinding(action, key){
+	console.log("Adding key binding for action: " + action + " to key: " + key);
+	$(document).bind('keydown', key,
+		function(){
+			move(action, true);
+		}
+	);
+	$(document).bind('keyup', key,
+		function(){
+			move(action, false);
+		}
+	);	
+}

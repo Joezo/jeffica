@@ -8,17 +8,17 @@
         <script src="/js/main.js"></script>
     </head>
     <body>
-        <button onclick="move('demo')">Run demo (ctrl+d)</button>
-        <button onclick="move('takeoff');">Takeoff (ctrl+t)</button>
-        <button onclick="move('forward');">Forward (w)</button>
-        <button onclick="move('left');">Left (a)</button>
-        <button onclick="move('right');">Right (d)</button>
-        <button onclick="move('back');">Back (s)</button>
-        <button onclick="move('up');">Up (k)</button>
-        <button onclick="move('down');">Down (m)</button>
-        <button onclick="move('clockwise');">Clockwise</button>
-        <button onclick="move('counterClockwise');">Counter Clockwise</button>
-        <button onclick="move('stop');">Stop! (space)</button>
+        <button onclick="move('demo', true)">Run demo (ctrl+d)</button>
+        <button onclick="move('takeoff', true);">Takeoff (ctrl+t)</button>
+        <button onclick="move('forward', true);">Forward (w)</button>
+        <button onclick="move('left', true);">Left (a)</button>
+        <button onclick="move('right, true');">Right (d)</button>
+        <button onclick="move('back, true');">Back (s)</button>
+        <button onclick="move('up', true);">Up (k)</button>
+        <button onclick="move('down', true);">Down (m)</button>
+        <button onclick="move('clockwise', true);">Clockwise</button>
+        <button onclick="move('counterClockwise', true);">Counter Clockwise</button>
+        <button onclick="move('stop', true);">Stop! (space)</button>
         <label for="speed">Speed:</label> <input type="range" id="speed" min="1" max="10"/>
         <hr/>
         <iframe width="640" height="360" src="//localhost:8001"></iframe>
