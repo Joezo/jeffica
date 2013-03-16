@@ -4,6 +4,7 @@ var png = require('ar-drone-png-stream');
 //web server stuff
 var fs = require('fs');
 var express = require('express');
+var client = arDrone.createClient();
 var app = express();
 
 app.get('/', function(req, res){
@@ -18,8 +19,10 @@ app.get('/demo', function(req, res){
     renderPage(res, 'view/demo.js', 'text/javascript');
     demo();
 	});
-
+png(client, { port: 8000 });
 app.listen(3000);
+
+
 console.log('Web server listening on port 3000');
 
 //end web server stuff
