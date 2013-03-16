@@ -20,6 +20,11 @@ $(function(){
 	});
 });
 
+var socket = io.connect('http://localhost');
+socket.on('connected', function (data) {
+    console.log(data);
+});
+
 $(document).ready(function() {
 	//defining keyboard shortcuts
 	$(document).bind('keydown', 'ctrl+d',
@@ -42,7 +47,7 @@ $(document).ready(function() {
 			move('forward');
 		}
 	);
-	$(document).bind('keydown', 'z',
+	$(document).bind('keydown', 's',
 		function(){
 			move('back');
 		}
@@ -52,7 +57,7 @@ $(document).ready(function() {
 			move('left');
 		}
 	);
-	$(document).bind('keydown', 's',
+	$(document).bind('keydown', 'd',
 		function(){
 			move('right');
 		}

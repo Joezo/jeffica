@@ -6,25 +6,19 @@
         <script src="/js/socket.io.min.js"></script>
         <script src="/js/jquery.hotkeys.js"></script>
         <script src="/js/main.js"></script>
-        <script>
-            var socket = io.connect('http://localhost');
-            socket.on('connected', function (data) {
-                console.log(data);
-            });
-        </script>
     </head>
     <body>
-        <button onclick="move('demo')">Run demo</button>
-        <button onclick="move('takeoff');">Takeoff</button>
-        <button onclick="move('forward');">Forward</button>
-        <button onclick="move('left');">Left</button>
-        <button onclick="move('right');">Right</button>
-        <button onclick="move('back');">Back</button>
-        <button onclick="move('up');">Up</button>
-        <button onclick="move('down');">Down</button>
-        <button onclick="move('stop');">Stop!</button>
-        <input type="range" id="speed" min="1" max="10"/>
+        <button onclick="move('demo')">Run demo (ctrl+d)</button>
+        <button onclick="move('takeoff');">Takeoff (ctrl+t)</button>
+        <button onclick="move('forward');">Forward (w)</button>
+        <button onclick="move('left');">Left (a)</button>
+        <button onclick="move('right');">Right (d)</button>
+        <button onclick="move('back');">Back (s)</button>
+        <button onclick="move('up');">Up (k)</button>
+        <button onclick="move('down');">Down (m)</button>
+        <button onclick="move('stop');">Stop! (space)</button>
+        <label for="speed">Speed:</label> <input type="range" id="speed" min="1" max="10"/>
         <hr/>
-        <iframe width="640" height="360" src="//localhost:8001"/>
+        <iframe width="640" height="360" src="//localhost:8001"></iframe>
     </body>
 </html>
