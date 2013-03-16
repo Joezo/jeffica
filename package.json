@@ -10,7 +10,8 @@
     "node": "*"
   },
   "dependencies": {
-    "ar-drone":"*"
+    "ar-drone":"*",
+    "ar-drone-png-stream":"*"
   },
   "devDependencies": {
   },

@@ -1,5 +1,8 @@
 var arDrone = require('ar-drone');
+var png = require('ar-drone-png-stream');
+
 var client = arDrone.createClient();
+png(client, { port: 8000 });
 
 client.takeoff();
 
