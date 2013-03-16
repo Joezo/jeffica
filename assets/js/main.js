@@ -27,6 +27,11 @@ $(document).ready(function() {
 			move('demo');
 		}
 	);
+	$(document).bind('keydown', 'ctrl+t',
+		function(){
+			move('takeoff');
+		}
+	);
 	$(document).bind('keydown', 'space',
 		function(){
 			move('stop');
@@ -50,6 +55,16 @@ $(document).ready(function() {
 	$(document).bind('keydown', 's',
 		function(){
 			move('right');
+		}
+	);
+	$(document).bind('keydown', 'k',
+		function(){
+			move('up');
+		}
+	);
+	$(document).bind('keydown', 'm',
+		function(){
+			move('down');
 		}
 	);
 });
