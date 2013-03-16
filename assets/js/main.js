@@ -27,4 +27,29 @@ $(document).ready(function() {
 			move('demo');
 		}
 	);
+	$(document).bind('keydown', 'space',
+		function(){
+			move('stop');
+		}
+	);
+	$(document).bind('keydown', 'w',
+		function(){
+			move('forward');
+		}
+	);
+	$(document).bind('keydown', 'z',
+		function(){
+			move('back');
+		}
+	);
+	$(document).bind('keydown', 'a',
+		function(){
+			move('left');
+		}
+	);
+	$(document).bind('keydown', 's',
+		function(){
+			move('right');
+		}
+	);
 });
