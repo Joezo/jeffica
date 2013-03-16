@@ -7,6 +7,8 @@ var express = require('express');
 var client = arDrone.createClient();
 var app = express();
 
+client.config('general:navdata_demo', true);
+
 app.get('/', function(req, res){
       renderPage(res, 'view/index.html', 'text/html');
 	});
@@ -23,6 +25,12 @@ app.get('/demo', function(req, res){
       renderPage(res, 'view/demo.js', 'text/javascript');
       demo();
 	});
+
+app.get('/battery', function(req, res){
+  client.on('batteryChange', function(e){
+    res.end(e);
+  })
+});
 
 png(client, { port: 8000 });
 console.log('PNG server listening on port 8000');
