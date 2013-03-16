@@ -11,9 +11,9 @@
         <div>Demo (ctrl+d) - Takeoff (ctrl+t) - Forward (w) - Left (a) - Right (d) - Back (s) - Up (k) - Down (m) - Clockwise (l) - Counter Clockwise (j) - Stop (ctrl+space) - Land (space)</div>
         <div>
         <button onclick="move('flipLeft', true);">Flip</button>
+        <label for="speed">Speed:</label> <input type="range" id="speed" min="1" max="9"/>
         <button onclick="move('remember', true);">Remember</button>
         <button onclick="move('replay', true);">Replay</button>
-        <label for="speed">Speed:</label> <input type="range" id="speed" min="1" max="9"/>
         </div>
         <hr/>
         <iframe width="640" height="360" src="//localhost:8001"></iframe>
