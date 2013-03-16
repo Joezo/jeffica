@@ -47,15 +47,21 @@ function demo() {
         this.clockwise(0.25);
       })
       .after(5000, function () {
-        this.clockwise(0.25);
+        this.stop();
+      })
+      .after(1000, function () {
+        this.front(0.5);
       })
       .after(5000, function () {
-        this.clockwise(0.25);
+        this.stop();
+      })
+      .after(1000, function () {
+        this.left(0.5);
       })
       .after(5000, function () {
-        this.clockwise(0.25);
+        this.stop();
       })
-      .after(3000, function () {
+      .after(1000, function () {
         this.animate('flipLeft', 15);
       })
       .after(1000, function () {
