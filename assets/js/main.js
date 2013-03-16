@@ -20,7 +20,7 @@ $(function(){
 	});
 });
 
-var socket = io.connect('http://localhost');
+var socket = io.connect('');	//use current host/port
 socket.on('connected', function (data) {
     console.log(data);
 });
