@@ -94,5 +94,3 @@ function renderPage(res, file, type) {
   res.setHeader('Content-Length', page.length);
   res.end(page);
 }
-
-

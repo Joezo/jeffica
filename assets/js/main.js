@@ -14,8 +14,17 @@ $(function(){
 			url: "/command/speed",
 			data: {speed:$('#speed').val()},
 			success: function(data){
-				console.log('Adjusted speed')
+				console.log('Adjusted speed');
 			}
 		});
 	});
+});
+
+$(document).ready(function() {
+	//defining keyboard shortcuts
+	$(document).bind('keydown', 'ctrl+d',
+		function(){
+			move('demo');
+		}
+	);
 });
