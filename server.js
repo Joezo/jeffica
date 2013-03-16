@@ -1,5 +1,7 @@
 var arDrone = require('ar-drone');
 var png = require('ar-drone-png-stream');
+var util = require('util');
+var nodeAction = require('./lib/nodeAction.js');
 
 //web server stuff
 var fs = require('fs');
@@ -12,7 +14,9 @@ var client = arDrone.createClient();
 
 client.config('general:navdata_demo', true);
 
-//serve all static files from /assests
+var actionObj = new nodeAction(client);
+
+//serve all static files from /assets
 app.use(express.static('assets'));
 
 //main actions below
@@ -20,19 +24,21 @@ app.get('/', function(req, res){
       renderPage(res, 'view/index.html', 'text/html');
 	});
 
-app.get('/demo', function(req, res){
-      renderPage(res, 'view/demo.js', 'text/javascript');
-      demo();
-	});
-
 app.get('/battery', function(req, res){
   client.on('batteryChange', function(e){
     batteryLevel = {batteryLevel: e};
     var page = JSON.stringify(batteryLevel);
     res.setHeader('Content-Type', 'text/json');
-    res.setHeader('Content-Length', page.length)
+    res.setHeader('Content-Length', page.length);
     res.end(page);
   });
+});
+
+//command actions here
+app.get('/command/*', function(req, res){
+	var command = req.params[0];
+	actionObj.run(command);
+    renderPage(res, 'view/command.js', 'text/javascript');
 });
 
 png(client, { port: 8001 });

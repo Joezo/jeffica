@@ -13,13 +13,14 @@
         </script>
     </head>
     <body>
-        <button onclick="runDemo()">Run demo</button>
+        <button onclick="move('demo')">Run demo</button>
         <button onclick="move('forward');">Forward</button>
         <button onclick="move('left');">Left</button>
         <button onclick="move('right');">Right</button>
         <button onclick="move('back');">Back</button>
         <button onclick="move('up');">Up</button>
         <button onclick="move('down');">Down</button>
+        <input type="range" id="speed" min="1" max="10"/>
         <hr/>
         <iframe width="640" height="360" src="//localhost:8001"/>
     </body>
