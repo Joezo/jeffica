@@ -9,33 +9,33 @@ var app = express();
 
 client.config('general:navdata_demo', true);
 
-app.get('/', function (req, res) {
-  renderPage(res, 'view/index.html', 'text/html');
-});
+//serve all static files from /assests
+app.use(express.static('assets'));
 
-app.get('/assets/js/main.js', function (req, res) {
-  renderPage(res, 'assets/js/main.js', 'text/javascript');
-});
+//main actions below
+app.get('/', function(req, res){
+      renderPage(res, 'view/index.html', 'text/html');
+	});
 
-app.get('/assets/js/jquery.min.js', function (req, res) {
-  renderPage(res, 'assets/js/jquery.min.js', 'text/javascript');
-});
+app.get('/demo', function(req, res){
+      renderPage(res, 'view/demo.js', 'text/javascript');
+      demo();
+	});
 
-app.get('/demo', function (req, res) {
-  renderPage(res, 'view/demo.js', 'text/javascript');
-  demo();
-});
-
-app.get('/battery', function (req, res) {
-  client.on('batteryChange', function (e) {
-    res.end(e);
+app.get('/battery', function(req, res){
+  client.on('batteryChange', function(e){
+    batteryLevel = {batteryLevel: e};
+    var page = JSON.stringify(batteryLevel);
+    res.setHeader('Content-Type', 'text/json');
+    res.setHeader('Content-Length', page.length)
+    res.end(page);
   })
 });
 
-png(client, { port: 8000 });
-console.log('PNG server listening on port 8000');
-app.listen(3000);
-console.log('Web server listening on port 3000');
+png(client, { port: 8001 });
+console.log('PNG server listening on port 8001');
+app.listen(3001);
+console.log('Web server listening on port 3001');
 
 //end web server stuff
 
@@ -43,19 +43,25 @@ function demo() {
   client.animateLeds("snakeGreenRed", 1, 10);
   client.takeoff();
   client
+      // .after(5000, function () {
+      //   this.clockwise(0.25);
+      // })
       .after(5000, function () {
-        this.clockwise(0.25);
+        this.stop();
       })
-      .after(5000, function () {
-        this.clockwise(0.25);
-      })
-      .after(5000, function () {
-        this.clockwise(0.25);
-      })
-      .after(5000, function () {
-        this.clockwise(0.25);
+      .after(1000, function () {
+        this.front(0.5);
       })
       .after(3000, function () {
+        this.stop();
+      })
+      .after(1000, function () {
+        this.right(0.5);
+      })
+      .after(1000, function () {
+        this.stop();
+      })
+      .after(1000, function () {
         this.animate('flipLeft', 15);
       })
       .after(1000, function () {
