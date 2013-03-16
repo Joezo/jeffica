@@ -9,9 +9,8 @@ var express = require('express')
     , app = express()
     , server = require('http').createServer(app)
     , io = require('socket.io').listen(server);
-//
-var client = arDrone.createClient();
 
+var client = arDrone.createClient();
 client.config('general:navdata_demo', true);
 
 var actionObj = new nodeAction(client);
@@ -28,9 +27,7 @@ app.get('/battery', function(req, res){
   client.on('batteryChange', function(e){
     batteryLevel = {batteryLevel: e};
     var page = JSON.stringify(batteryLevel);
-    res.setHeader('Content-Type', 'text/json');
-    res.setHeader('Content-Length', page.length);
-    res.end(page);
+    renderString(res, page, 'text/json');
   });
 });
 
@@ -52,45 +49,15 @@ io.sockets.on('connection', function (socket) {
   socket.emit('connected', { hello: 'hello' });
 });
 
-//end web server stuff
-
-function demo() {
-  client.animateLeds("snakeGreenRed", 10, 30);
-  client.takeoff();
-  client
-      // .after(5000, function () {
-      //   this.clockwise(0.25);
-      // })
-      .after(5000, function () {
-        this.stop();
-      })
-      .after(1000, function () {
-        this.front(0.5);
-      })
-      .after(3000, function () {
-        this.stop();
-      })
-      .after(1000, function () {
-        this.right(0.5);
-      })
-      .after(1000, function () {
-        this.stop();
-      })
-      .after(1000, function () {
-        this.animate('flipLeft', 15);
-      })
-      .after(1000, function () {
-        this.stop();
-      })
-      .after(2000, function () {
-        this.land();
-      });
-}
-
 //display a page to the browser
 function renderPage(res, file, type) {
   var page = fs.readFileSync(file);
-  res.setHeader('Content-Type', type);
-  res.setHeader('Content-Length', page.length);
-  res.end(page);
+  renderString(res, page, type);
+}
+
+//display a string to the browser
+function renderString(res, data, type){
+	  res.setHeader('Content-Type', type);
+	  res.setHeader('Content-Length', data.length);
+	  res.end(data);	
 }
