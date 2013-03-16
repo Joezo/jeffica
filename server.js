@@ -9,7 +9,7 @@ var app = express();
 
 client.config('general:navdata_demo', true);
 
-//serve all static files from /assests
+//serve all static files from /assets
 app.use(express.static('assets'));
 
 //main actions below
@@ -27,9 +27,9 @@ app.get('/battery', function(req, res){
     batteryLevel = {batteryLevel: e};
     var page = JSON.stringify(batteryLevel);
     res.setHeader('Content-Type', 'text/json');
-    res.setHeader('Content-Length', page.length)
+    res.setHeader('Content-Length', page.length);
     res.end(page);
-  })
+  });
 });
 
 png(client, { port: 8001 });
