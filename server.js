@@ -1,5 +1,7 @@
 var arDrone = require('ar-drone');
 var png = require('ar-drone-png-stream');
+var util = require('util');
+var nodeAction = require('./lib/nodeAction.js');
 
 //web server stuff
 var fs = require('fs');
@@ -8,6 +10,8 @@ var client = arDrone.createClient();
 var app = express();
 
 client.config('general:navdata_demo', true);
+
+var actionObj = new nodeAction(client);
 
 //serve all static files from /assets
 app.use(express.static('assets'));
@@ -30,6 +34,13 @@ app.get('/battery', function(req, res){
     res.setHeader('Content-Length', page.length);
     res.end(page);
   });
+});
+
+//command actions here
+app.get('/command/*', function(req, res){
+	var command = req.params[0];
+	actionObj.run(command);
+    renderPage(res, 'view/command.js', 'text/javascript');	
 });
 
 png(client, { port: 8001 });
