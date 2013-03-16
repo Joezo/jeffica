@@ -8,20 +8,11 @@
         <script src="/js/main.js"></script>
     </head>
     <body>
-        <button onclick="move('demo', true)">Run demo (ctrl+d)</button>
-        <button onclick="move('takeoff', true);">Takeoff (ctrl+t)</button>
-        <button onclick="move('forward', true);">Forward (w)</button>
-        <button onclick="move('left', true);">Left (a)</button>
-        <button onclick="move('right, true');">Right (d)</button>
-        <button onclick="move('back, true');">Back (s)</button>
-        <button onclick="move('up', true);">Up (k)</button>
-        <button onclick="move('down', true);">Down (m)</button>
-        <button onclick="move('clockwise', true);">Clockwise (l)</button>
-        <button onclick="move('counterClockwise', true);">Counter Clockwise (j)</button>
-        <button onclick="move('stop', true);">Stop! (ctrl+space)</button>
-        <button onclick="move('land', true);">Land! (space)</button>
+        <div>Demo (ctrl+d) - Takeoff (ctrl+t) - Forward (w) - Left (a) - Right (d) - Back (s) - Up (k) - Down (m) - Clockwise (l) - Counter Clockwise (j) - Stop (ctrl+space) - Land (space)</div>
+        <div>
         <button onclick="move('flipLeft', true);">Flip</button>
         <label for="speed">Speed:</label> <input type="range" id="speed" min="1" max="9"/>
+        </div>
         <hr/>
         <iframe width="640" height="360" src="//localhost:8001"></iframe>
     </body>
