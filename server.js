@@ -43,22 +43,22 @@ function demo() {
   client.takeoff();
 
   client
-      .after(5000, function () {
-        this.clockwise(0.25);
-      })
+      // .after(5000, function () {
+      //   this.clockwise(0.25);
+      // })
       .after(5000, function () {
         this.stop();
       })
       .after(1000, function () {
         this.front(0.5);
       })
-      .after(5000, function () {
+      .after(3000, function () {
         this.stop();
       })
       .after(1000, function () {
-        this.left(0.5);
+        this.right(0.5);
       })
-      .after(5000, function () {
+      .after(1000, function () {
         this.stop();
       })
       .after(1000, function () {
