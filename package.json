@@ -12,7 +12,8 @@
   "dependencies": {
     "ar-drone":"*",
     "ar-drone-png-stream":"*",
-    "express": "*"
+    "express": "*",
+    "socket.io":"*"
   },
   "devDependencies": {
   },

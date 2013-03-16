@@ -3,7 +3,14 @@
     <head>
         <title>Jeffica</title>
         <script src="/js/jquery.min.js"></script>
+        <script src="/js/socket.io.min.js"></script>
         <script src="/js/main.js"></script>
+        <script>
+            var socket = io.connect('http://localhost');
+            socket.on('connected', function (data) {
+                console.log(data);
+            });
+        </script>
     </head>
     <body>
         <button onclick="runDemo()">Run demo</button>

@@ -3,9 +3,12 @@ var png = require('ar-drone-png-stream');
 
 //web server stuff
 var fs = require('fs');
-var express = require('express');
+var express = require('express')
+    , app = express()
+    , server = require('http').createServer(app)
+    , io = require('socket.io').listen(server);
+//
 var client = arDrone.createClient();
-var app = express();
 
 client.config('general:navdata_demo', true);
 
@@ -29,18 +32,24 @@ app.get('/battery', function(req, res){
     res.setHeader('Content-Type', 'text/json');
     res.setHeader('Content-Length', page.length)
     res.end(page);
-  })
+  });
 });
 
 png(client, { port: 8001 });
 console.log('PNG server listening on port 8001');
-app.listen(3001);
-console.log('Web server listening on port 3001');
+app.listen(3001, function() {
+  console.log('Web server listening on port 3001');
+});
+
+// IO Callback
+io.sockets.on('connection', function (socket) {
+  socket.emit('connected', { hello: 'hello' });
+});
 
 //end web server stuff
 
 function demo() {
-  client.animateLeds("snakeGreenRed", 1, 10);
+  client.animateLeds("snakeGreenRed", 10, 30);
   client.takeoff();
   client
       // .after(5000, function () {
@@ -79,3 +88,5 @@ function renderPage(res, file, type) {
   res.setHeader('Content-Length', page.length);
   res.end(page);
 }
+
+
