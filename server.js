@@ -13,13 +13,8 @@ app.get('/', function(req, res){
       renderPage(res, 'view/index.html', 'text/html');
 	});
 
-app.get('/assets/js/main.js', function(req, res){
-      renderPage(res, 'assets/js/main.js', 'text/javascript');
-	});
-
-app.get('/assets/js/jquery.min.js', function(req, res){
-      renderPage(res, 'assets/js/jquery.min.js', 'text/javascript');
-	});
+//serve all static files from /assests
+app.use(express.static('assets'));
 
 app.get('/demo', function(req, res){
       renderPage(res, 'view/demo.js', 'text/javascript');
@@ -29,7 +24,7 @@ app.get('/demo', function(req, res){
 app.get('/battery', function(req, res){
   client.on('batteryChange', function(e){
     res.end(e);
-  })
+  });
 });
 
 png(client, { port: 8000 });
