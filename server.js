@@ -8,7 +8,16 @@ client.takeoff();
 
 client
   .after(5000, function() {
-    this.clockwise(0.5);
+    this.clockwise(0.25);
+  })
+  .after(5000, function() {
+    this.clockwise(0.25);
+  })
+  .after(5000, function() {
+    this.clockwise(0.25);
+  })
+  .after(5000, function() {
+    this.clockwise(0.25);
   })
   .after(3000, function() {
     this.animate('flipLeft', 15);
