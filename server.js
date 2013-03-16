@@ -15,9 +15,13 @@ app.get('/assets/js/main.js', function(req, res){
       renderPage(res, 'assets/js/main.js', 'text/javascript');
 	});
 
+app.get('/assets/js/jquery.min.js', function(req, res){
+      renderPage(res, 'assets/js/jquery.min.js', 'text/javascript');
+	});
+
 app.get('/demo', function(req, res){
-    renderPage(res, 'view/demo.js', 'text/javascript');
-    demo();
+      renderPage(res, 'view/demo.js', 'text/javascript');
+      demo();
 	});
 
 png(client, { port: 8000 });
