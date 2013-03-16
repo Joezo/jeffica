@@ -21,11 +21,6 @@ app.get('/', function(req, res){
       renderPage(res, 'view/index.html', 'text/html');
 	});
 
-app.get('/demo', function(req, res){
-      renderPage(res, 'view/demo.js', 'text/javascript');
-      demo();
-	});
-
 app.get('/battery', function(req, res){
   client.on('batteryChange', function(e){
     batteryLevel = {batteryLevel: e};
@@ -49,39 +44,6 @@ app.listen(3001);
 console.log('Web server listening on port 3001');
 
 //end web server stuff
-
-function demo() {
-  client.animateLeds("snakeGreenRed", 1, 10);
-  client.takeoff();
-  client
-      // .after(5000, function () {
-      //   this.clockwise(0.25);
-      // })
-      .after(5000, function () {
-        this.stop();
-      })
-      .after(1000, function () {
-        this.front(0.7);
-      })
-      // .after(3000, function () {
-      //   this.stop();
-      // })
-      .after(500, function () {
-        this.right(0.9);
-      })
-      .after(1000, function () {
-        this.stop();
-      })
-      .after(1000, function () {
-        this.animate('flipLeft', 15);
-      })
-      .after(1000, function () {
-        this.stop();
-      })
-      .after(2000, function () {
-        this.land();
-      });
-}
 
 //display a page to the browser
 function renderPage(res, file, type) {
