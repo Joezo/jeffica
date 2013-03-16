@@ -18,7 +18,7 @@ $(function(){
 		console.log('speed changed to', $('#speed').val() );
 		$.ajax({
 			url: "/command/speed",
-			data: {speed:$('#speed').val()},
+			data: {value:$('#speed').val()},
 			success: function(data){
 				console.log('Adjusted speed');
 			}
