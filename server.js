@@ -19,41 +19,39 @@ app.get('/demo', function(req, res){
     renderPage(res, 'view/demo.js', 'text/javascript');
     demo();
 	});
+
 png(client, { port: 8000 });
+console.log('PNG server listening on port 8000');
 app.listen(3000);
-
-
 console.log('Web server listening on port 3000');
 
 //end web server stuff
 
-var client = arDrone.createClient();
-png(client, { port: 8000 });
-console.log('PNG server listening on port 8000');
-
-function demo(){
+function demo() {
   client.takeoff();
 
   client
-    .after(5000, function() {
-      this.clockwise(0.25);
-    })
-    .after(5000, function() {
-      this.clockwise(0.25);
-    })
-    .after(5000, function() {
-      this.clockwise(0.25);
-    })
-    .after(5000, function() {
-      this.clockwise(0.25);
-    })
-    .after(3000, function() {
-      this.animate('flipLeft', 15);
-    })
-    .after(1000, function() {
-      this.land();
-      this.stop();
-    });
+      .after(5000, function () {
+        this.clockwise(0.25);
+      })
+      .after(5000, function () {
+        this.clockwise(0.25);
+      })
+      .after(5000, function () {
+        this.clockwise(0.25);
+      })
+      .after(5000, function () {
+        this.clockwise(0.25);
+      })
+      .after(3000, function () {
+        this.animate('flipLeft', 15);
+      })
+      .after(1000, function () {
+        this.stop();
+      })
+      .after(2000, function () {
+        this.land();
+      });
 }
 
 //display a page to the browser
