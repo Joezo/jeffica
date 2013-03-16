@@ -51,8 +51,8 @@ console.log('Web server listening on port 3001');
 //end web server stuff
 
 function demo() {
+  client.animateLeds("snakeGreenRed", 1, 10);
   client.takeoff();
-
   client
       // .after(5000, function () {
       //   this.clockwise(0.25);
@@ -61,13 +61,13 @@ function demo() {
         this.stop();
       })
       .after(1000, function () {
-        this.front(0.5);
+        this.front(0.7);
       })
-      .after(3000, function () {
-        this.stop();
-      })
-      .after(1000, function () {
-        this.right(0.5);
+      // .after(3000, function () {
+      //   this.stop();
+      // })
+      .after(500, function () {
+        this.right(0.9);
       })
       .after(1000, function () {
         this.stop();
@@ -84,9 +84,9 @@ function demo() {
 }
 
 //display a page to the browser
-function renderPage(res, file, type){
+function renderPage(res, file, type) {
   var page = fs.readFileSync(file);
   res.setHeader('Content-Type', type);
   res.setHeader('Content-Length', page.length);
-  res.end(page);	
+  res.end(page);
 }
