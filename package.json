@@ -14,7 +14,8 @@
     "ar-drone-png-stream":"*",
     "express": "*",
     "socket.io":"*",
-    "util": "*"
+    "util": "*",
+    "underscore": "*"
   },
   "devDependencies": {
   },
