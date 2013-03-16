@@ -28,14 +28,18 @@ app.get('/demo', function(req, res){
 
 app.get('/battery', function(req, res){
   client.on('batteryChange', function(e){
-    res.end(e);
+    batteryLevel = {batteryLevel: e};
+    var page = JSON.stringify(batteryLevel);
+    res.setHeader('Content-Type', 'text/json');
+    res.setHeader('Content-Length', page.length)
+    res.end(page);
   })
 });
 
-png(client, { port: 8000 });
-console.log('PNG server listening on port 8000');
-app.listen(3000);
-console.log('Web server listening on port 3000');
+png(client, { port: 8001 });
+console.log('PNG server listening on port 8001');
+app.listen(3001);
+console.log('Web server listening on port 3001');
 
 //end web server stuff
 
