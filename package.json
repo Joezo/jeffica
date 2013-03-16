@@ -1,0 +1,18 @@
+{
+  "name": "properties",
+  "version": "0.0.1",
+  "description": "Jeffica",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:joewarren/jeffica.git"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "ar-drone":"*"
+  },
+  "devDependencies": {
+  },
+  "main": "./"
+}
