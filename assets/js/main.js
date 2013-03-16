@@ -43,7 +43,9 @@ $(document).ready(function() {
 			left: 'a',
 			right: 'd',
 			up: 'k',
-			down: 'm'
+			down: 'm',
+			clockwise: 'l',
+			counterClockwise: 'j'
 	};
 	for(var control in controls){
 		addKeyBinding(control, controls[control]);

@@ -35,7 +35,8 @@ app.get('/battery', function(req, res){
 app.get('/command/*', function(req, res){
 	var command = req.params[0];
   var control = req.query['control'] || 'true';
-	actionObj.run(command, control);
+  var value   = req.query['value'] || 0;
+	actionObj.run(command, control, value);
     renderPage(res, 'view/command.js', 'text/javascript');
 });
 
