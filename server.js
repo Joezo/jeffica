@@ -7,17 +7,15 @@ var express = require('express');
 var app = express();
 
 app.get('/', function(req, res){
-	  var page = fs.readFileSync('view/index.html');
-	  res.setHeader('Content-Type', 'text/html');
-	  res.setHeader('Content-Length', page.length);
-	  res.end(page);
+      renderPage(res, 'view/index.html', 'text/html');
+	});
+
+app.get('/assets/js/main.js', function(req, res){
+      renderPage(res, 'assets/js/main.js', 'text/javascript');
 	});
 
 app.get('/demo', function(req, res){
-	  var page = fs.readFileSync('view/demo.js');
-	  res.setHeader('Content-Type', 'text/javascript');
-	  res.setHeader('Content-Length', page.length);
-	  res.end(page);
+    renderPage(res, 'view/demo.js', 'text/javascript');
     demo();
 	});
 
@@ -28,6 +26,7 @@ console.log('Web server listening on port 3000');
 
 var client = arDrone.createClient();
 png(client, { port: 8000 });
+console.log('PNG server listening on port 8000');
 
 function demo(){
   client.takeoff();
@@ -53,4 +52,11 @@ function demo(){
       this.stop();
     });
 }
-  
+
+//display a page to the browser
+function renderPage(res, file, type){
+  var page = fs.readFileSync(file);
+  res.setHeader('Content-Type', type);
+  res.setHeader('Content-Length', page.length);
+  res.end(page);	
+}
