@@ -42,8 +42,8 @@ $(document).ready(function() {
 			back: 's',
 			left: 'a',
 			right: 'd',
-			up: 'k',
-			down: 'm',
+			up: 'i',
+			down: 'k',
 			clockwise: 'l',
 			counterClockwise: 'j'
 	};

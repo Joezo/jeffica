@@ -40,8 +40,8 @@ app.get('/command/*', function(req, res){
     renderPage(res, 'view/command.js', 'text/javascript');
 });
 
-png(client, { port: 8001 });
-console.log('PNG server listening on port 8001');
+//png(client, { port: 8001 });
+//console.log('PNG server listening on port 8001');
 app.listen(3001, function() {
   console.log('Web server listening on port 3001');
 });

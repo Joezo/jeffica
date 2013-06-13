@@ -1,6 +1,6 @@
 {
   "name": "properties",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Jeffica",
   "repository": {
     "type": "git",
@@ -15,7 +15,8 @@
     "express": "*",
     "socket.io":"*",
     "util": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "sleep": "*"
   },
   "devDependencies": {
   },
